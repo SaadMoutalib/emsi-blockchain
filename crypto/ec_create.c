@@ -8,6 +8,5 @@ EC_KEY *ec_create(void){
 
 	if(!EC_KEY_generate_key(key))
 		return NULL;
-
 	return key;
 }
