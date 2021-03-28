@@ -1,7 +1,6 @@
 #include "hblk_crypto.h"
 
 int ec_save(EC_KEY *key, char const *folder){
-	EVP_PKEY *pkey = EVP_PKEY_new(); 
 	char path[BUFSIZ];
 	
 	int dir_err = -1;
@@ -16,16 +15,8 @@ int ec_save(EC_KEY *key, char const *folder){
 		
 		if(dir_err == -1)
 		{
-			EVP_PKEY_free(pkey);
 			return 0;
 		}
-	}
-	
-	
- 	if(!EVP_PKEY_assign_EC_KEY(pkey, key))
-	{
-		EVP_PKEY_free(pkey);
-		return 0;
 	}
 	
 	sprintf(path, "%s/%s", folder, PUB_FILENAME);
@@ -33,14 +24,12 @@ int ec_save(EC_KEY *key, char const *folder){
 
 	if(!f)
 	{
-		EVP_PKEY_free(pkey);
 		return 0;
 	}
 
-	if(!PEM_write_PUBKEY(f, pkey))
+	if(!PEM_write_EC_PUBKEY(f, key))
 	{
 		fclose(f);
-		EVP_PKEY_free(pkey);
 		return 0;
 	}
 	
@@ -52,19 +41,16 @@ int ec_save(EC_KEY *key, char const *folder){
 	
 	if(!f)
 	{
-		EVP_PKEY_free(pkey);
 		return 0;
 	}
 
 
-	if(!PEM_write_PrivateKey(f, pkey, NULL, NULL, 0, 0, NULL))
+	if(!PEM_write_ECPrivateKey(f, key, NULL, NULL, 0, NULL, NULL))
 	{
 		fclose(f);
-		EVP_PKEY_free(pkey);
 		return 0;
 	}
 	
-	EVP_PKEY_free(pkey);
 	fclose(f);
 	return 1;
 
