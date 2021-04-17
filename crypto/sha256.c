@@ -14,7 +14,6 @@ uint8_t *sha256(int8_t const *s, size_t len,
 	if(!s || !digest)
 		return NULL;
 
-
 	SHA256_Init(&context);
 	SHA256_Update(&context, s, len);
 	SHA256_Final(digest ,&context);
