@@ -2,7 +2,7 @@
 
 EC_KEY *ec_create(void)
 {
-	C_KEY *key = EC_KEY_new_by_curve_name(EC_CURVE);
+	EC_KEY *key = EC_KEY_new_by_curve_name(EC_CURVE);
 
 	if (!key)
 	{
