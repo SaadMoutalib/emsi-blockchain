@@ -1,3 +1,6 @@
+#ifndef HBLK_CRYPTO_H
+#define HBLK_CRYPTO_H
+
 #include <openssl/sha.h>
 #include <stdint.h>
 #include <openssl/ec.h>
@@ -49,3 +52,4 @@ int ec_save(EC_KEY *key, char const *folder);
 EC_KEY *ec_load(char const *folder);
 uint8_t *ec_sign(EC_KEY const *key, uint8_t const *msg, size_t msglen, sig_t *sig);
 int ec_verify(EC_KEY const *key, uint8_t const *msg, size_t msglen, sig_t const *sig);
+#endif
