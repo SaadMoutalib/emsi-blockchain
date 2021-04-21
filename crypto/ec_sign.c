@@ -12,10 +12,11 @@
 uint8_t *ec_sign(EC_KEY const *key, uint8_t const *msg,	size_t msglen,
 		sig_t *sig)
 {
-	EC_KEY *ckey = EC_KEY_new();
+	EC_KEY *ckey;
 
 	if (!key || !msg || !sig)
 		return (NULL);
+	ckey = EC_KEY_new();
 	if (!EC_KEY_copy(ckey, key))
 		return (NULL);
 	if (!ECDSA_sign(0, msg, msglen, sig->sig,
