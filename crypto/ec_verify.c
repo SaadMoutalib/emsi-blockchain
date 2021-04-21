@@ -5,7 +5,7 @@ int ec_verify(EC_KEY const *key, uint8_t const *msg,
 {
 	EC_KEY *ckey = EC_KEY_new();
 
-	if (!key || !msg || !sig->len || !sig->sig)
+	if (!key || !msg || !sig->len || !sig)
 		return (0);
 
 	if (!EC_KEY_copy(ckey, key))
