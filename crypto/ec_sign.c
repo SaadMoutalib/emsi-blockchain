@@ -21,6 +21,6 @@ uint8_t *ec_sign(EC_KEY const *key, uint8_t const *msg,	size_t msglen,
 	if (!ECDSA_sign(0, msg, msglen, sig->sig,
 				(unsigned int *)&(sig->len), ckey))
 		return (NULL);
-	EC_KEY_free(ckey);	
+	EC_KEY_free(ckey);
 	return (sig->sig);
 }
