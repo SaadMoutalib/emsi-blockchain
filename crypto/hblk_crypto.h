@@ -3,8 +3,6 @@
 
 #include <stdint.h>
 #include <openssl/ec.h>
-#include <openssl/obj_mac.h>
-#include <openssl/bn.h>
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <openssl/pem.h>
@@ -33,7 +31,7 @@ typedef struct sig_s
      * @sig must stay first, so we can directly use the structure as
      * an array of char
      */
-	int8_t sig[SIG_MAX_LEN];
+	uint8_t sig[SIG_MAX_LEN];
 	uint8_t len;
 } sig_t;
 
