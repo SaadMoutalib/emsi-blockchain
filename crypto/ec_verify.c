@@ -7,7 +7,7 @@ int ec_verify(EC_KEY const *key, uint8_t const *msg,
 
 	if (!key || !msg || !sig)
 		return (0);
-	
+
 	if (sig->len == 0)
 		return (0);
 
