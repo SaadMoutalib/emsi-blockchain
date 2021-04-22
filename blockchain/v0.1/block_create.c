@@ -13,9 +13,9 @@ block_t *block_create(block_t const *prev, int8_t const *data,
 {
 	block_t *block;
 	uint32_t len;
-	time_t t = time(0);
+	time_t t;
 
-	if (!prev || !data || !data_len)
+	if (!prev || !data)
 		return (NULL);
 
 	len = data_len > BLOCKCHAIN_DATA_MAX ?
@@ -24,6 +24,7 @@ block_t *block_create(block_t const *prev, int8_t const *data,
 	block  = (block_t *)malloc(sizeof(block_t));
 	block->info.index = prev->info.index + 1;
 	block->info.difficulty = 0;
+	time(&t);
 	block->info.timestamp = (uint64_t)&t;
 	block->info.nonce = 0;
 	memcpy(block->info.prev_hash, prev->hash, SHA256_DIGEST_LENGTH);
