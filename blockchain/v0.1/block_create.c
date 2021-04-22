@@ -15,9 +15,6 @@ block_t *block_create(block_t const *prev, int8_t const *data,
 	uint32_t len;
 	time_t t;
 
-	if (!prev || !data)
-		return (NULL);
-
 	len = data_len > BLOCKCHAIN_DATA_MAX ?
 		BLOCKCHAIN_DATA_MAX : data_len;
 
