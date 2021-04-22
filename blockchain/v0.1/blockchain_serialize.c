@@ -1,14 +1,14 @@
 #include "blockchain.h"
 
 /**
- * write_block - a function that writes block to file
+ * block_serialize - a function that writes block to file
  * @ptr: pointer to the block to be serialized
  * @idx: index of the parameter
  * @arg: The file in which the data will be written
  *
  * Return: 0 upon success, or -1 upon failure
  */
-int write_block(llist_node_t ptr, unsigned int idx, void *arg)
+int block_serialize(llist_node_t ptr, unsigned int idx, void *arg)
 {
 	FILE *fp;
 	block_t *block = ptr;
@@ -47,7 +47,7 @@ int blockchain_serialize(blockchain_t const *blockchain, char const *path)
 	fwrite(&hblk_endian, sizeof(hblk_endian), 1, f);
 	fwrite(&hblk_blocks, sizeof(hblk_blocks), 1, f);
 
-	if (llist_for_each(blockchain->chain, write_block, f) == -1)
+	if (llist_for_each(blockchain->chain, block_serialize, f) == -1)
 	{
 		fclose(f);
 		return (-1);
