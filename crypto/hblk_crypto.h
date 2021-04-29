@@ -1,6 +1,7 @@
 #ifndef HBLK_CRYPTO_H
 #define HBLK_CRYPTO_H
 
+#include <strings.h>
 #include <stdint.h>
 #include <openssl/ec.h>
 #include <sys/types.h>
