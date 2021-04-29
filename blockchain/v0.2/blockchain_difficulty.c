@@ -15,10 +15,10 @@ uint32_t blockchain_difficulty(blockchain_t const *blockchain)
 		return (0);
 
 	last_block = llist_get_tail(blockchain->chain);
-	
-	if(!last_block)
+
+	if (!last_block)
 		return (0);
-	
+
 	if (last_block->info.index % DIFFICULTY_ADJUSTMENT_INTERVAL == 0 &&
 		last_block->info.index != 0)
 	{
@@ -31,7 +31,8 @@ uint32_t blockchain_difficulty(blockchain_t const *blockchain)
 		if (act_elapsed_time < exp_elapsed_time / 2)
 			return (last_block->info.difficulty + 1);
 		else if (act_elapsed_time > exp_elapsed_time * 2)
-			return (last_block->info.difficulty--);
+			return (last_block->info.difficulty > 0 ?
+				last_block->info.difficulty - 1 : 0);
 	}
 	return (last_block->info.difficulty);
 }
