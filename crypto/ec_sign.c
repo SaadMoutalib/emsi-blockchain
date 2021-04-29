@@ -19,7 +19,7 @@ uint8_t *ec_sign(EC_KEY const *key, uint8_t const *msg,	size_t msglen,
 		return (NULL);
 	if (!EC_KEY_check_key(key))
 		return (NULL);
-	if (!SHA256(msg, msglen, md))
+	if (!SHA256(msg, msglen, hash))
 		return (NULL);
 	sig->len = ECDSA_size(key);
 	if (!sig->len)
