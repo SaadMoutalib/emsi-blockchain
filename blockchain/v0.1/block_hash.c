@@ -10,5 +10,5 @@ uint8_t *block_hash(block_t const *block,
 			uint8_t hash_buf[SHA256_DIGEST_LENGTH])
 {
 	return (SHA256((const unsigned char *)block,
-		sizeof(block), hash_buf));
+		sizeof(block->info) + block->data.len, hash_buf));
 }
