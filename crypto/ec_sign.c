@@ -16,6 +16,8 @@ uint8_t *ec_sign(EC_KEY const *key, uint8_t const *msg,	size_t msglen,
 
 	if (!key || !msg || !sig)
 		return (NULL);
+	if (!EC_KEY_check_key(key))
+		return (NULL);
 	if (!EC_KEY_copy(ckey, key))
 		return (NULL);
 	if (!ECDSA_sign(0, msg, msglen, sig->sig,
