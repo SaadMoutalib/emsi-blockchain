@@ -27,7 +27,7 @@ int hash_matches_difficulty(uint8_t const hash[SHA256_DIGEST_LENGTH],
 		iter++;
 	}
 
-	if (diff == difficulty)
+	if (diff >= difficulty)
 		return (1);
 
 	return (0);
