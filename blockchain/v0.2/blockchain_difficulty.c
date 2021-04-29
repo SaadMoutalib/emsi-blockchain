@@ -9,7 +9,7 @@
 uint32_t blockchain_difficulty(blockchain_t const *blockchain)
 {
 	block_t *last_block, *last_adjusted_block;
-	time_t exp_elapsed_time, act_elapsed_time;
+	uint64_t exp_elapsed_time, act_elapsed_time;
 
 	if (!blockchain)
 		return (0);
