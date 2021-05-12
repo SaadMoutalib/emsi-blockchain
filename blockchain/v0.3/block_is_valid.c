@@ -29,6 +29,7 @@ int validate_tx(llist_node_t node, unsigned int idx, void *arg)
  * block_is_valid - function that verifies that a Block is valid
  * @block: points to the Block to check
  * @prev_block: points to the previous Block in the Blockchain
+ * @all_unspent: pointer to all unspent outputs UTXO
  *
  * Return: 0 if valid, 1 if invalid
  */
