@@ -11,7 +11,7 @@ int match_unspent(llist_node_t node, void *arg)
 	unspent_tx_out_t *utxo = node;
 	tx_in_t *txi = arg;
 
-	if (!memcmp(txi->tx_out_hash, utxo->out.hash, SHA256_DIGEST_LENGTH))
+	if (memcmp(txi->tx_out_hash, utxo->out.hash, SHA256_DIGEST_LENGTH) != 0)
 		return (1);
 	return (0);
 }
@@ -35,13 +35,6 @@ int check_inputs(llist_node_t node, unsigned int idx, void *arg)
 	{
 		visitor->valid = 0;
 		return (1);
-	}
-
-	if (!memcmp(txi->tx_out_hash, utxo->out.hash,
-			    SHA256_DIGEST_LENGTH))
-	{
-		visitor->valid = 0;
-		return (0);
 	}
 
 	key = ec_from_pub(utxo->out.pub);
