@@ -13,6 +13,7 @@ block_t *block_create(block_t const *prev, int8_t const *data,
 {
 	block_t *block;
 	uint32_t len;
+	llist_t *transactions = llist_create(MT_SUPPORT_FALSE);
 
 	len = data_len > BLOCKCHAIN_DATA_MAX ?
 		BLOCKCHAIN_DATA_MAX : data_len;
