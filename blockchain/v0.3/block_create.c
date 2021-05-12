@@ -26,6 +26,7 @@ block_t *block_create(block_t const *prev, int8_t const *data,
 	memcpy(block->info.prev_hash, prev->hash, SHA256_DIGEST_LENGTH);
 	memcpy(block->data.buffer, data, len);
 	block->data.len = len;
+	block->transactions = transactions;
 	memset(block->hash, 0, SHA256_DIGEST_LENGTH);
 
 	return (block);
