@@ -11,7 +11,7 @@ int match_unspent(llist_node_t node, void *arg)
 	unspent_tx_out_t *utxo = node;
 	tx_in_t *txi = arg;
 
-	if (memcmp(txi->tx_out_hash, utxo->out.hash, SHA256_DIGEST_LENGTH) != 0)
+	if (!memcmp(txi->tx_out_hash, utxo->out.hash, SHA256_DIGEST_LENGTH))
 		return (1);
 	return (0);
 }
