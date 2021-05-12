@@ -1,8 +1,5 @@
 #include "transaction.h"
 
-/*#include "../provided/provided.h"
- */
-
 /**
  * find_unspent - finds unspent matching txo
  * @node: current node, unspent_txo_t
