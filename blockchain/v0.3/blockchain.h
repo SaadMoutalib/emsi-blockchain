@@ -25,7 +25,7 @@
 0, /* difficulty */ \
 1537578000, /* timestamp */ \
 0, /* nonce */ \
-{0} /* prev_hash */ \
+0 /* prev_hash */ \
 }, \
 { /* data */ \
 "Holberton School", /* buffer */ \
