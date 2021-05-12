@@ -36,6 +36,14 @@ int check_inputs(llist_node_t node, unsigned int idx, void *arg)
 		visitor->valid = 0;
 		return (1);
 	}
+
+	if (!memcmp(txi->tx_out_hash, utxo->out.hash,
+			    SHA256_DIGEST_LENGTH))
+	{
+		visitor->valid = 0;
+		return (0);
+	}
+
 	key = ec_from_pub(utxo->out.pub);
 	if (!key ||
 	    !ec_verify(key, visitor->tx->id, SHA256_DIGEST_LENGTH, &txi->sig))
